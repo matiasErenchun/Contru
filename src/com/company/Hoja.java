@@ -2,26 +2,23 @@ package com.company;
 
 import java.util.ArrayList;
 
-public  class Hoja
+public abstract class Hoja
 {
     private Integer numero;
     private String contenido;
     private String opcion= " ";
-    private ArrayList<Hoja>hojasSiguentes;
 
     public Hoja(Integer numero, String contenido, String opcion)
     {
         this.numero = numero;
         this.contenido = contenido;
         this.opcion = opcion;
-        this.hojasSiguentes=new ArrayList<>();
     }
 
     public Hoja(Integer numero, String contenido)
     {
         this.numero = numero;
         this.contenido = contenido;
-        this.hojasSiguentes=new ArrayList<>();
     }
 
     public Integer getNumero()
@@ -54,15 +51,6 @@ public  class Hoja
         this.opcion = opcion;
     }
 
-    public boolean agregarHoja(Hoja hoja)
-    {
-        return this.hojasSiguentes.add(hoja);
-    }
-
-    public Hoja getHoja(int i)
-    {
-        return this.hojasSiguentes.get(i);
-    }
 
     public String getContenidoModificadoConAventurero(String aventurero)
     {

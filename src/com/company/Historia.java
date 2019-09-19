@@ -1,6 +1,8 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class Historia
 {
@@ -8,7 +10,7 @@ public class Historia
     private String autor;
     private String sinopsis;
     private String urlImagen;
-    private ArrayList<Hoja>hojas;
+    private HashMap<Integer,Hoja> hojas;
 
     public Historia(String nombre, String autor, String sinopsis, String urlImagen)
     {
@@ -16,6 +18,7 @@ public class Historia
         this.autor = autor;
         this.sinopsis = sinopsis;
         this.urlImagen = urlImagen;
+        this.hojas=new HashMap<>();
     }
 
     public String getNombre()
@@ -57,4 +60,23 @@ public class Historia
     {
         this.urlImagen = urlImagen;
     }
+
+    public boolean agregarhoja(Hoja hoja)
+    {
+        boolean b= this.hojas.containsKey(hoja.getNumero());
+        if(b)
+        {
+
+            System.out.println("erro al agregar hoja, este numero ya existe ");
+            return false;
+        }
+        else
+        {
+            this.hojas.putIfAbsent(hoja.getNumero(),hoja);
+            System.out.println("hoja agregada exitosamente ");
+            return true;
+        }
+    }
+
+
 }
