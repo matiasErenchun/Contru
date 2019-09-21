@@ -6,20 +6,14 @@ public abstract class Hoja
 {
     private Integer numero;
     private String contenido;
-    private String opcion= " ";
-
-    public Hoja(Integer numero, String contenido, String opcion)
-    {
-        this.numero = numero;
-        this.contenido = contenido;
-        this.opcion = opcion;
-    }
+    private String urlImagen=" ";
 
     public Hoja(Integer numero, String contenido)
     {
         this.numero = numero;
         this.contenido = contenido;
     }
+
 
     public Integer getNumero()
     {
@@ -41,16 +35,16 @@ public abstract class Hoja
         this.contenido = contenido;
     }
 
-    public String getOpcion()
+
+    public String getUrlImagen()
     {
-        return opcion;
+        return urlImagen;
     }
 
-    public void setOpcion(String opcion)
+    public void setUrlImagen(String urlImagen)
     {
-        this.opcion = opcion;
+        this.urlImagen = urlImagen;
     }
-
 
     public String getContenidoModificadoConAventurero(String aventurero)
     {

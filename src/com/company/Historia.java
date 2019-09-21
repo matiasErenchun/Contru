@@ -6,29 +6,28 @@ import java.util.HashSet;
 
 public class Historia
 {
-    private String nombre;
+    private String titulo;
     private String autor;
     private String sinopsis;
-    private String urlImagen;
+    private String urlImagen=" ";
     private HashMap<Integer,Hoja> hojas;
 
-    public Historia(String nombre, String autor, String sinopsis, String urlImagen)
+    public Historia(String titulo, String autor, String sinopsis)
     {
-        this.nombre = nombre;
+        this.titulo = titulo;
         this.autor = autor;
         this.sinopsis = sinopsis;
-        this.urlImagen = urlImagen;
         this.hojas=new HashMap<>();
     }
 
-    public String getNombre()
+    public String getTitulo()
     {
-        return nombre;
+        return this.titulo;
     }
 
-    public void setNombre(String nombre)
+    public void setTitulo(String titulo)
     {
-        this.nombre = nombre;
+        this.titulo = titulo;
     }
 
     public String getAutor()
@@ -76,6 +75,13 @@ public class Historia
             System.out.println("hoja agregada exitosamente ");
             return true;
         }
+    }
+
+    @Override
+    public String toString()
+    {
+        String string="Titulo: "+this.titulo+", Autor: "+this.autor+", Sinopsis: "+this.sinopsis;
+        return string;
     }
 
 
