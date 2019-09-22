@@ -24,6 +24,11 @@ public class Biblioteca
         }
     }
 
+    public ArrayList<Historia> getHistorias()
+    {
+        return this.historias;
+    }
+
 
 
 }
