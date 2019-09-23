@@ -1,11 +1,11 @@
 package com.company;
 
-public class Opcion
-{
+public class Opcion {
     private String opcion;
     private Integer numeroHojaDestino;
 
-    public Opcion(String opcion, Integer numeroHojaDestino) {
+    public Opcion(String opcion, Integer numeroHojaDestino)
+    {
         this.opcion = opcion;
         this.numeroHojaDestino = numeroHojaDestino;
     }
@@ -29,4 +29,5 @@ public class Opcion
     {
         this.numeroHojaDestino = numeroHojaDestino;
     }
+
 }

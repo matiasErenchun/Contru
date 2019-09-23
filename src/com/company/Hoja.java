@@ -6,12 +6,14 @@ public abstract class Hoja
 {
     private Integer numero;
     private String contenido;
-    private String urlImagen=" ";
+    private String urlImagen = " ";
+
 
     public Hoja(Integer numero, String contenido)
     {
         this.numero = numero;
         this.contenido = contenido;
+
     }
 
 
@@ -48,12 +50,14 @@ public abstract class Hoja
 
     public String getContenidoModificadoConAventurero(String aventurero)
     {
-        String salida=this.getContenido().replaceAll("/--/",aventurero);
+        String salida = this.getContenido().replaceAll("/--/", aventurero);
         return salida;
     }
 
-    public void printContenido(String contenido)
+    public void printContenido()
     {
-        System.out.println(contenido);
+
+        System.out.println(this.contenido);
     }
+
 }

@@ -9,15 +9,19 @@ public class Historia
     private String titulo;
     private String autor;
     private String sinopsis;
-    private String urlImagen=" ";
-    private HashMap<Integer,Hoja> hojas;
+    private String urlImagen = " ";
+    private HashMap<Integer, Nodo>nodos;
+    private HashMap<Integer,Final>finales;
+    private HashMap<Integer,Reinicio>renicios;
 
     public Historia(String titulo, String autor, String sinopsis)
     {
         this.titulo = titulo;
         this.autor = autor;
         this.sinopsis = sinopsis;
-        this.hojas=new HashMap<>();
+        this.nodos = new HashMap<>();
+        this.finales = new HashMap<>();
+        this.renicios = new HashMap<>();
     }
 
     public String getTitulo()
@@ -60,29 +64,105 @@ public class Historia
         this.urlImagen = urlImagen;
     }
 
+    public boolean hojaExiste(Integer numeroHoja)
+    {
+        if(this.renicios.containsKey(numeroHoja))
+        {
+            return true;
+        }
+        if(this.finales.containsKey(numeroHoja))
+        {
+            return true;
+        }
+        if(this.nodos.containsKey(numeroHoja))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     public boolean agregarhoja(Hoja hoja)
     {
-        boolean b= this.hojas.containsKey(hoja.getNumero());
-        if(b)
-        {
+        boolean b = this.hojaExiste(hoja.getNumero());
+        if (b) {
 
             System.out.println("erro al agregar hoja, este numero ya existe ");
             return false;
         }
         else
         {
-            this.hojas.putIfAbsent(hoja.getNumero(),hoja);
-            System.out.println("hoja agregada exitosamente ");
-            return true;
+            if(hoja.getClass().equals(Nodo.class))
+            {
+                Nodo nodo=(Nodo)hoja;
+                this.nodos.put(hoja.getNumero(),nodo);
+            }
+            if(hoja.getClass().equals(Final.class))
+            {
+                Final fin=(Final) hoja;
+                this.finales.put(hoja.getNumero(),fin);
+            }
+            if(hoja.getClass().equals(Reinicio.class))
+            {
+                Reinicio reinicio=(Reinicio) hoja;
+                this.renicios.put(hoja.getNumero(),reinicio);
+            }
+            return false;
         }
     }
+
 
     @Override
     public String toString()
     {
-        String string="Titulo: "+this.titulo+", Autor: "+this.autor+", Sinopsis: "+this.sinopsis;
+        String string = "Titulo: " + this.titulo + ", Autor: " + this.autor + ", Sinopsis: " + this.sinopsis;
         return string;
     }
+
+    public void leerHojas(Integer numeroHoja, String aventurero)
+    {
+        if(this.hojaExiste(numeroHoja))
+        {
+            boolean continuarLeyendo=true;
+            while (continuarLeyendo)
+            {
+                if(!this.hojaExiste(numeroHoja))
+                {
+                    System.out.println(" la historia termino ");
+                    continuarLeyendo=false;
+                }
+                else
+                {
+                    if(this.renicios.containsKey(numeroHoja))
+                    {
+                        Reinicio hojaActual=this.renicios.get(numeroHoja);
+                        System.out.println(hojaActual.getContenidoModificadoConAventurero(aventurero));
+                        System.out.println(" reinicio");
+                        numeroHoja=1;
+                    }
+                    else
+                    {
+                        if (this.finales.containsKey(numeroHoja))
+                        {
+                            Final hojaActual=this.finales.get(numeroHoja);
+                            System.out.println(hojaActual.getContenidoModificadoConAventurero(aventurero));
+                            numeroHoja=-1;
+                        }
+                        else
+                        {
+                            Nodo hojaActual=this.nodos.get(numeroHoja);
+                            System.out.println(hojaActual.getContenidoModificadoConAventurero(aventurero));
+                            numeroHoja=hojaActual.mostrarElegirOpcion();
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
+
+
 
 
 }

@@ -1,1 +1,18 @@
-[{"titulo":"pepe","autor":"matias","sinopsis":"prueba 1","urlImagen":" ","hojas":{}}]
+[
+  {
+    "titulo": "otso",
+    "autor": "matias",
+    "sinopsis": "otso el rey osos del norte",
+    "urlImagen": " ",
+    "nodos": {
+      "1": {
+        "opcions": [],
+        "numero": 1,
+        "contenido": "el gran otso reina sobre todos los bosuqe del norte",
+        "urlImagen": " "
+      }
+    },
+    "finales": {},
+    "renicios": {}
+  }
+]
